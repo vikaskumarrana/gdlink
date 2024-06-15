@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- kanha tora dhum tana banshi -->
+    <div class="container margin">
+        <div class="main-container flex-center margin ">
+            <img id="back-img" src="img/bird.png" alt="" style="width: 30vw;">
+            <div class="drvimg absolute">
+                <img class="logo-img1" src="img/googledrive backup.com (1).png" alt="">
+                <img class="logo-img2" src="img/copy.png" alt="">
+            </div>
+            <h1 class="">Google Drive Image Link Converter</h1>
+        <p>Convert your Google Drive image links into direct viewable HTML links with just a click!</p>
+        <p>Simply paste your link and get ready to use it in two shakes of a lamb's tail!</p>
+        </div>
+        <div class="btns flex-center">
+            <div class="input-btm">
+                <input type="text" id="driveLink" placeholder="Paste your Google Drive image link here">
+                <input type="number" id="imageSize" placeholder="Enter desired image size (e.g., 500)">
+                <div class="ctd flex-center">
+                    <button onclick="convertLink()">Convert to Direct View Link</button>
+                </div>
+            </div>
+        </div>
+        <img class="prvimg" id="previewImage">
+        </div>
+        <div class="button-container">
+            <button class="copy-button" id="copyButton" onclick="copyLink()" style="display: none;">Copy Link</button>
+            <button class="preview-button" id="previewButton" onclick="previewImage()" style="display: none;">Preview Image</button>
+        </div>
+        <img class="prvimg" id="previewImage">
+        </div>
+    </div>
+    <script>
+        let directLink = '';
+
+        function convertLink() {
+            const driveLink = document.getElementById('driveLink').value;
+            const imageSize = document.getElementById('imageSize').value || '500'; // Default size 500 if not specified
+            const output = document.getElementById('output');
+            const copyButton = document.getElementById('copyButton');
+            const previewButton = document.getElementById('previewButton');
+            
+            const fileIdMatch = driveLink.match(/\/d\/(.*?)\/view/);
+            if (fileIdMatch) {
+                const fileId = fileIdMatch[1];
+                directLink = `https://lh3.googleusercontent.com/d/${fileId}=s${imageSize}?authuser=0`;
+                const htmlLink = `<a href="${directLink}" target="_blank">${directLink}</a>`;
+                const imgTag = `<img src="${directLink}" alt="Google Drive Image">`;
+                output.innerHTML = `<div>${htmlLink}</div><div>${imgTag}</div>`;
+                copyButton.style.display = 'block';
+                previewButton.style.display = 'block';
+            } else {
+                output.innerHTML = "Invalid Google Drive link. Please ensure it follows the correct format.";
+                copyButton.style.display = 'none';
+                previewButton.style.display = 'none';
+            }
+        }
+
+        function copyLink() {
+            navigator.clipboard.writeText(directLink).then(() => {
+                alert('Link copied to clipboard');
+            }).catch(err => {
+                alert('Failed to copy the link');
+            });
+        }
+
+        function previewImage() {
+            const previewImage = document.getElementById('previewImage');
+            previewImage.src = directLink;
+            previewImage.style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgba(45, 171, 250, 0.058);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.logo-img1 {
+    width: 300px;
+    filter: opacity(80%);
+}
+.logo-img2 {
+    width: 100px;
+}
+
+.absolute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(50%);
+}
+
+.main-container {
+    position: relative;
+    width: 100vw;
+}
+
+.drvimg {
+    left: 50%;
+    top: 20%;
+    transform: translate(-50%,-50%);
+}
+
+.margin {
+    margin: 15px;
+}
+
+#back-img {
+    margin-right: 500px;
+    filter: opacity(5%);
+}
+
+/* logo container copleted */
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 700;
+    font-size: 24px;
+}
+p {
+    color: #666;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+
+input[type="text"],
+input[type="number"],
+button {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #45a049;
+}
+.output {
+    margin-top: 20px;
+    text-align: left;
+}
+.output a {
+    color: #007bff;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.copy-button, .preview-button {
+    width: calc(50% - 10px);
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.copy-button:hover, .preview-button:hover {
+    background-color: #0056b3;
+}
